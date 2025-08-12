@@ -13,3 +13,6 @@ recipient = "age12lalm8vk36avetyrn3rjyvwz3xcffaysjt2mmfyc9566vg2dds8skck3jy"
 name = {{ $name | quote }}
 email = {{ $email | quote }}
 location = {{ $location | quote }}
+
+[data.homebrew]
+prefix = "{{ if eq .chezmoi.arch "arm64" }}/opt/homebrew{{ else }}/usr/local{{ end }}"
