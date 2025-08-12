@@ -1,0 +1,19 @@
+[user]
+name = {{ .name }}
+email = {{ .email }}
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHrB0t2ur9xeMFM1CksbpQVgwl2bcUUT1pJF/E+VD11a
+
+[commit]
+gpgsign = true
+
+[gpg]
+format = ssh
+
+[gpg.ssh]
+allowedSignersFile = ~/.ssh/allowed_signers
+
+[init]
+defaultBranch = main
+
+[tag]
+gpgsign = true
