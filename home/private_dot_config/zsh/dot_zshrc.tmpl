@@ -19,6 +19,8 @@ export HISTSIZE=100000
 export SAVEHIST=100000
 
 # Misc XDG-friendly configs for common tools (harmless if unused)
+export LESSHISTFILE="$XDG_STATE_HOME/less/history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/config"
 export PIP_CONFIG_FILE="$XDG_CONFIG_HOME/pip/pip.conf"
 export NODE_REPL_HISTORY="$XDG_STATE_HOME/node/repl_history"
 export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
@@ -35,6 +37,8 @@ setopt NO_BEEP
 setopt COMPLETE_IN_WORD
 setopt PROMPT_SUBST
 setopt PIPE_FAIL
+
+export EDITOR="nvim"
 
 # ----------------------------------------------------------------------------
 # History
@@ -82,10 +86,16 @@ fi
 
 source ${ZIM_HOME}/init.zsh
 
+{{ if lookPath "mise" -}}
+eval "$(mise activate zsh)"
+{{- end }}
+
 # ============================================================================
 # Aliases
 # ============================================================================
 
 {{- if not (stat (joinPath .chezmoi.homeDir ".config/zsh/.zim/modules/zsh-abbr/zsh-abbr.zsh")) }}
 alias ll="ls -al"
-{{ end }}
+{{- end }}
+
+alias e="$EDITOR"
