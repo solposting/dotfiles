@@ -1,0 +1,15 @@
+{{- $name := promptStringOnce . "name" "Name" -}}
+{{- $email := promptStringOnce . "email" "Email address" -}}
+{{- $location := promptChoiceOnce . "location" "Location" (list "home" "work") "work" -}}
+
+encryption = "age"
+
+[age]
+command = "rage"
+identity = "~/.config/chezmoi/key.txt"
+recipient = "age12lalm8vk36avetyrn3rjyvwz3xcffaysjt2mmfyc9566vg2dds8skck3jy"
+
+[data]
+name = {{ $name | quote }}
+email = {{ $email | quote }}
+location = {{ $location | quote }}
