@@ -17,4 +17,10 @@ Library
 
 {{ if eq .chezmoi.os "windows" }}
 .hushlogin
+.zshenv
+{{ end }}
+
+{{ if ne .chezmoi.os "windows" }}
+Documents/
+.chezmoiscripts/windows/**
 {{ end }}

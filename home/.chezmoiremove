@@ -4,3 +4,7 @@
 .terminfo
 .viminfo
 .python_history
+
+{{ if eq .chezmoi.os "windows" -}}
+.zshenv
+{{ end }}
