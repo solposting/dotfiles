@@ -1,16 +1,24 @@
 [user]
 name = {{ .name }}
 email = {{ .email }}
-signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHrB0t2ur9xeMFM1CksbpQVgwl2bcUUT1pJF/E+VD11a
+signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAII1bjt0fCnK6gfs558slCj4CZ5sNZMP4FsR7CQLybYWK
 
 [commit]
 gpgsign = true
+
+{{ if eq .chezmoi.os "windows" -}}
+[core]
+sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+{{- end }}
 
 [gpg]
 format = ssh
 
 [gpg.ssh]
 allowedSignersFile = ~/.ssh/allowed_signers
+{{ if eq .chezmoi.os "windows" -}}
+program = C:/Windows/System32/OpenSSH/ssh-keygen.exe
+{{- end }}
 
 [init]
 defaultBranch = main
